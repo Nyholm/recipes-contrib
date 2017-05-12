@@ -1,0 +1,8 @@
+translation:
+  locales: ["en", "fr"]
+  configs:
+    app:
+      dirs: ["%kernel.root_dir%/Resources/views", "%kernel.root_dir%/../src"]
+      output_dir: "%kernel.root_dir%/Resources/translations"
+      excluded_names: ["*TestCase.php", "*Test.php"]
+      excluded_dirs: [cache, data, logs]
