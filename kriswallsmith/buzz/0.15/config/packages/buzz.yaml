@@ -1,0 +1,3 @@
+services:
+    Buzz\Browser:
+        class: Buzz\Browser
