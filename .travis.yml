@@ -27,5 +27,4 @@ install:
 
 script:
     - composer req "helios-ag/fm-elfinder-bundle:^7.0"
-    - echo "Everything was installed correctly."
     - printenv
