@@ -15,15 +15,14 @@ matrix:
 
 before_install:
     - phpenv config-rm xdebug.ini || true
-    - CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
-    - echo $CHANGED_FILES
+    - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/${TRAVIS_PULL_REQUEST}
+    - export PACKAGE=$(curl -s SYMFONY_ENDPOINT | sed -rn 's/.*composer req "(.+?)".*/\1/p')
 
 install:
     - composer create-project "symfony/skeleton:${SKELETON_VERSION}" flex
     - cd flex
     - composer config extra.symfony.allow-contrib true
-    - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/${TRAVIS_PULL_REQUEST}
 
 script:
-    - composer req "helios-ag/fm-elfinder-bundle:^7.0"
+    - composer req "${PACKAGE}"
     - printenv
