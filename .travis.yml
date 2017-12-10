@@ -16,6 +16,7 @@ matrix:
 before_install:
     - phpenv config-rm xdebug.ini || true
     - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/${TRAVIS_PULL_REQUEST}
+    - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/185
     - export PACKAGE=$(curl -s SYMFONY_ENDPOINT | sed -rn 's/.*composer req "(.+?)".*/\1/p')
 
 install:
