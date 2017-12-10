@@ -1,0 +1,30 @@
+language: php
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.2
+          env: SKELETON_VERSION="^3.4"
+        - php: 7.2
+          env: SKELETON_VERSION="^4.0"
+
+
+
+before_install:
+    - phpenv config-rm xdebug.ini || true
+    - composer create-project "symfony/skeleton:${SKELETON_VERSION}" flex
+    - cd flex
+    - composer config extra.symfony.allow-contrib true
+
+
+install:
+     - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/187
+     - composer req "helios-ag/fm-elfinder-bundle:^7.0"
+
+script:
+    - echo "Everything was installed correctly."
