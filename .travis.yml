@@ -23,7 +23,7 @@ install:
     - composer create-project "symfony/skeleton:${SKELETON_VERSION}" flex
     - cd flex
     - composer config extra.symfony.allow-contrib true
-    - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/187
+    - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/${TRAVIS_PULL_REQUEST}
 
 script:
     - composer req "helios-ag/fm-elfinder-bundle:^7.0"
