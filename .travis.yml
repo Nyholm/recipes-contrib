@@ -28,3 +28,4 @@ install:
 
 script:
     - echo "Everything was installed correctly."
+    - printenv
