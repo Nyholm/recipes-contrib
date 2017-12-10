@@ -17,7 +17,7 @@ before_install:
     - phpenv config-rm xdebug.ini || true
     - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/${TRAVIS_PULL_REQUEST}
     - export SYMFONY_ENDPOINT=https://symfony.sh/r/github.com/symfony/recipes-contrib/185
-    - export PACKAGE=$(curl -s SYMFONY_ENDPOINT | sed -En 's/.*composer req "([^"]+)".*/\1/p')
+    - export PACKAGE=$(curl -s $SYMFONY_ENDPOINT | sed -En 's/.*composer req "([^"]+)".*/\1/p')
 
 install:
     - composer create-project "symfony/skeleton:${SKELETON_VERSION}" flex
